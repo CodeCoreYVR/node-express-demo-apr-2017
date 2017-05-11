@@ -11,6 +11,8 @@
 const express = require('express');
 const logger = require('morgan');
 
+const home = require('./routes/home');
+
 const app = express();
 
 // Configure Express app to use the ejs templating engine for our app's views
@@ -28,6 +30,8 @@ app.use((request, response, next) => {
 */
 app.use(logger('dev'));
 
+app.use('/', home);
+
 // URL: http://localhost:4545/helloWorld VERB: Get
 app.get('/helloWorld', (request, response) => {
   // This callback (which receives a request & response) is usually named
@@ -41,11 +45,13 @@ app.get('/helloWorld', (request, response) => {
 });
 
 // URL: http://localhost:4545/ VERB: Get
+/*
 app.get('/', (request, response) => {
   // use the response.render instead response.send when you want to
   // show a view from yours views folder
-  response.render(/* /views/ */'index');
+  response.render('index');
 });
+*/
 
 const PORT = 4545;
 app.listen(
