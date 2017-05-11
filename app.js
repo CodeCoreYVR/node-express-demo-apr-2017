@@ -14,6 +14,7 @@ const app = express();
 
 // URL: http://localhost:4545/helloWorld VERB: Get
 app.get('/helloWorld', (request, response) => {
+  debugger;
   // This callback (which receives a request & response) is usually named
   // Middleware
   // The arguments passed to this callback are in order: request, response & next
@@ -21,7 +22,7 @@ app.get('/helloWorld', (request, response) => {
   //   a browser)
   // - response is an object that contains the message our server will reply with
   //   to the client
-  response.send('Hello World');
+  response.send('Hello World!');
 });
 
 const PORT = 4545;
