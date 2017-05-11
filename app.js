@@ -10,6 +10,7 @@
 // the module.
 const express = require('express');
 const logger = require('morgan');
+const bodyParser = require('body-parser');
 
 const home = require('./routes/home');
 
@@ -29,6 +30,10 @@ app.use((request, response, next) => {
 });
 */
 app.use(logger('dev'));
+// 👇 bodyParser.urlencoded will return middleware that will
+// transform the raw data of the request into a javascript object
+// that will be assigned to req.body
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', home);
 
