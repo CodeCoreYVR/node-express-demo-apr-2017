@@ -13,6 +13,9 @@ const logger = require('morgan');
 
 const app = express();
 
+// Configure Express app to use the ejs templating engine for our app's views
+app.set('view engine', 'ejs');
+
 // unline app.get, app.use will work for all HTTP Verbs
 // if we do not give a URL for the first argument, it will match for every
 // URL
@@ -35,6 +38,13 @@ app.get('/helloWorld', (request, response) => {
   // - response is an object that contains the message our server will reply with
   //   to the client
   response.send('Hello World!');
+});
+
+// URL: http://localhost:4545/ VERB: Get
+app.get('/', (request, response) => {
+  // use the response.render instead response.send when you want to
+  // show a view from yours views folder
+  response.render(/* /views/ */'index');
 });
 
 const PORT = 4545;
