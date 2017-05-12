@@ -8,6 +8,7 @@
 // require is a function that's part of node that is
 // use load modules. it returns the object exported by
 // the module.
+const path = require('path');
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
@@ -30,6 +31,7 @@ app.use((request, response, next) => {
 });
 */
 app.use(logger('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
 // 👇 bodyParser.urlencoded will return middleware that will
 // transform the raw data of the request into a javascript object
 // that will be assigned to req.body
